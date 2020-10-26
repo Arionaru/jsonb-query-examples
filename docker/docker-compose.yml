@@ -1,0 +1,20 @@
+version: '3.2'
+
+volumes:
+  jsonb-postgres:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:9.6
+    container_name: jsonb-postgres
+    volumes:
+      - type: volume
+        source: jsonb-postgres
+        target: /var/lib/postgresql/dataConfig
+    environment:
+      POSTGRES_DB: jsonb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5446:5432"
